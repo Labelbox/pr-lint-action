@@ -6,34 +6,19 @@
   "scripts": {
     "build": "tsc",
     "format": "prettier --write **/*.ts",
+    "pack": "ncc build",
     "test": "jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/actions/container-toolkit-template.git"
-  },
-  "keywords": [
-    "actions",
-    "container",
-    "toolkit",
-    "setup"
-  ],
-  "author": "GitHub",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/actions/container-toolkit-template/issues"
-  },
-  "homepage": "https://github.com/actions/container-toolkit-template#readme",
+  "author": "Labelbox",
   "dependencies": {
-    "@actions/core": "^1.0.0",
-    "@actions/io": "^1.0.0",
-    "@actions/exec": "^1.0.0",
-    "@actions/github": "^1.0.0",
-    "@actions/tool-cache": "^1.0.0"
+    "@actions/core": "^1.2.0",
+    "@actions/github": "^2.1.1",
+    "@types/request": "^2.48.4"
   },
   "devDependencies": {
     "@types/jest": "^24.0.13",
     "@types/node": "^12.0.4",
+    "@zeit/ncc": "^0.20.5",
     "jest": "^24.8.0",
     "jest-circus": "^24.7.1",
     "prettier": "^1.17.1",

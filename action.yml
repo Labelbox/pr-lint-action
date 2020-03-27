@@ -1,10 +1,7 @@
 name: 'Pull Request Linter'
 description: 'Ensures your PR title matches a given regex'
-author: 'MorrisonCole'
-branding:
-  icon: 'check'
-  color: 'green'
-inputs: 
+author: 'Labelbox'
+inputs:
   title-regex:
     description: 'Regex to ensure PR title matches. Allows anything by default.'
     required: true
@@ -13,6 +10,7 @@ inputs:
     description: 'Comment for the bot to post on PRs that fail the regex. Use %regex% to reference regex.'
     required: true
     default: 'PR title failed to match %regex%.'
+
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: docker
+  image: Dockerfile
