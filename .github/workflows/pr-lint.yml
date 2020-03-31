@@ -15,4 +15,5 @@ jobs:
         uses: ./
         with:
           title-regex: '^\[[A-Z]+-\d*\](\ )'
+          on-failed-regex-comment: 'PR Title does not have a Jira issue prefix (ex. [ENG-123])'
           repo-token: "${{ secrets.GITHUB_TOKEN }}"

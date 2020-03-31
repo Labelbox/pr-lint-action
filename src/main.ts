@@ -17,11 +17,16 @@ async function run() {
   core.debug(`Title Regex: ${titleRegex}`);
   core.debug(`Title: ${title}`);
 
-  try {
-    if (!titleRegex.test(title)) {
-      core.setFailed(onFailedRegexComment);
+  const headSHA = githubContext.payload.pull_request?.head.sha;
+  if (!headSHA) {
+    core.setFailed("Error: could not find a HEAD SHA for this PR");
+  }
 
-      const pr = githubContext.issue;
+  try {
+    const pr = githubContext.issue;
+
+    let matchesRegex = titleRegex.test(title);
+    if (!matchesRegex) {
       await githubClient.pulls.createReview({
         owner: pr.owner,
         repo: pr.repo,
@@ -30,6 +35,15 @@ async function run() {
         event: 'COMMENT'
       });
     }
+
+    await githubClient.repos.createStatus({
+      owner: pr.owner,
+      repo: pr.repo,
+      sha: headSHA,
+      state: matchesRegex ? 'success' : 'pending',
+      context: 'labelbox/pr-lint',
+    });
+
   } catch (error) {
     core.setFailed(error.message);
   }
