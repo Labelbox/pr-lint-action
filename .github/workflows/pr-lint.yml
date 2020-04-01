@@ -1,8 +1,7 @@
 name: PR Lint
 
 on:
-  pull_request:
-    types: [opened, edited, reopened]
+  - pull_request
 
 jobs:
   pr-lint:
