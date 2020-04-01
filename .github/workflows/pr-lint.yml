@@ -14,6 +14,6 @@ jobs:
         id: pr-lint
         uses: ./
         with:
-          title-regex: '^\[[A-Z]+-\d*\](\ )'
-          on-failed-regex-comment: 'PR Title does not have a Jira issue prefix (ex. [ENG-123])'
+          title-regex: '\[[A-Z]+-\d*\]'
+          on-failed-regex-comment: 'PR Title does not have a Jira issue (ex. [ENG-123]). Please add a Jira issue surrounded by [] anywhere in the title'
           repo-token: "${{ secrets.GITHUB_TOKEN }}"

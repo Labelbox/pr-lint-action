@@ -36,6 +36,8 @@ async function run() {
       });
     }
 
+    core.debug(`Matched regex: ${matchesRegex}`);
+
     await githubClient.repos.createStatus({
       owner: pr.owner,
       repo: pr.repo,
